@@ -1,0 +1,512 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		344C75CF1D10C75B0077466A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 344C75CE1D10C75B0077466A /* AppDelegate.m */; };
+		344C75D21D10C75B0077466A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 344C75D11D10C75B0077466A /* main.m */; };
+		344C75D51D10C75B0077466A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 344C75D41D10C75B0077466A /* ViewController.m */; };
+		344C75D71D10C75B0077466A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 344C75D61D10C75B0077466A /* Assets.xcassets */; };
+		344C75DA1D10C75B0077466A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 344C75D81D10C75B0077466A /* Main.storyboard */; };
+		344C75E51D10C75B0077466A /* NumbersToPagesMailMergeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 344C75E41D10C75B0077466A /* NumbersToPagesMailMergeTests.m */; };
+		344C75F01D10C75B0077466A /* NumbersToPagesMailMergeUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 344C75EF1D10C75B0077466A /* NumbersToPagesMailMergeUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		344C75E11D10C75B0077466A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 344C75C21D10C75B0077466A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 344C75C91D10C75B0077466A;
+			remoteInfo = NumbersToPagesMailMerge;
+		};
+		344C75EC1D10C75B0077466A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 344C75C21D10C75B0077466A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 344C75C91D10C75B0077466A;
+			remoteInfo = NumbersToPagesMailMerge;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		344C75CA1D10C75B0077466A /* NumbersToPagesMailMerge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NumbersToPagesMailMerge.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		344C75CD1D10C75B0077466A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		344C75CE1D10C75B0077466A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		344C75D11D10C75B0077466A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		344C75D31D10C75B0077466A /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		344C75D41D10C75B0077466A /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		344C75D61D10C75B0077466A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		344C75D91D10C75B0077466A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		344C75DB1D10C75B0077466A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		344C75E01D10C75B0077466A /* NumbersToPagesMailMergeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NumbersToPagesMailMergeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		344C75E41D10C75B0077466A /* NumbersToPagesMailMergeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NumbersToPagesMailMergeTests.m; sourceTree = "<group>"; };
+		344C75E61D10C75B0077466A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		344C75EB1D10C75B0077466A /* NumbersToPagesMailMergeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NumbersToPagesMailMergeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		344C75EF1D10C75B0077466A /* NumbersToPagesMailMergeUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NumbersToPagesMailMergeUITests.m; sourceTree = "<group>"; };
+		344C75F11D10C75B0077466A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		344C75C71D10C75B0077466A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		344C75DD1D10C75B0077466A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		344C75E81D10C75B0077466A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		344C75C11D10C75B0077466A = {
+			isa = PBXGroup;
+			children = (
+				344C75CC1D10C75B0077466A /* NumbersToPagesMailMerge */,
+				344C75E31D10C75B0077466A /* NumbersToPagesMailMergeTests */,
+				344C75EE1D10C75B0077466A /* NumbersToPagesMailMergeUITests */,
+				344C75CB1D10C75B0077466A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		344C75CB1D10C75B0077466A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				344C75CA1D10C75B0077466A /* NumbersToPagesMailMerge.app */,
+				344C75E01D10C75B0077466A /* NumbersToPagesMailMergeTests.xctest */,
+				344C75EB1D10C75B0077466A /* NumbersToPagesMailMergeUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		344C75CC1D10C75B0077466A /* NumbersToPagesMailMerge */ = {
+			isa = PBXGroup;
+			children = (
+				344C75CD1D10C75B0077466A /* AppDelegate.h */,
+				344C75CE1D10C75B0077466A /* AppDelegate.m */,
+				344C75D31D10C75B0077466A /* ViewController.h */,
+				344C75D41D10C75B0077466A /* ViewController.m */,
+				344C75D61D10C75B0077466A /* Assets.xcassets */,
+				344C75D81D10C75B0077466A /* Main.storyboard */,
+				344C75DB1D10C75B0077466A /* Info.plist */,
+				344C75D01D10C75B0077466A /* Supporting Files */,
+			);
+			path = NumbersToPagesMailMerge;
+			sourceTree = "<group>";
+		};
+		344C75D01D10C75B0077466A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				344C75D11D10C75B0077466A /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		344C75E31D10C75B0077466A /* NumbersToPagesMailMergeTests */ = {
+			isa = PBXGroup;
+			children = (
+				344C75E41D10C75B0077466A /* NumbersToPagesMailMergeTests.m */,
+				344C75E61D10C75B0077466A /* Info.plist */,
+			);
+			path = NumbersToPagesMailMergeTests;
+			sourceTree = "<group>";
+		};
+		344C75EE1D10C75B0077466A /* NumbersToPagesMailMergeUITests */ = {
+			isa = PBXGroup;
+			children = (
+				344C75EF1D10C75B0077466A /* NumbersToPagesMailMergeUITests.m */,
+				344C75F11D10C75B0077466A /* Info.plist */,
+			);
+			path = NumbersToPagesMailMergeUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		344C75C91D10C75B0077466A /* NumbersToPagesMailMerge */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 344C75F41D10C75B0077466A /* Build configuration list for PBXNativeTarget "NumbersToPagesMailMerge" */;
+			buildPhases = (
+				344C75C61D10C75B0077466A /* Sources */,
+				344C75C71D10C75B0077466A /* Frameworks */,
+				344C75C81D10C75B0077466A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NumbersToPagesMailMerge;
+			productName = NumbersToPagesMailMerge;
+			productReference = 344C75CA1D10C75B0077466A /* NumbersToPagesMailMerge.app */;
+			productType = "com.apple.product-type.application";
+		};
+		344C75DF1D10C75B0077466A /* NumbersToPagesMailMergeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 344C75F71D10C75B0077466A /* Build configuration list for PBXNativeTarget "NumbersToPagesMailMergeTests" */;
+			buildPhases = (
+				344C75DC1D10C75B0077466A /* Sources */,
+				344C75DD1D10C75B0077466A /* Frameworks */,
+				344C75DE1D10C75B0077466A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				344C75E21D10C75B0077466A /* PBXTargetDependency */,
+			);
+			name = NumbersToPagesMailMergeTests;
+			productName = NumbersToPagesMailMergeTests;
+			productReference = 344C75E01D10C75B0077466A /* NumbersToPagesMailMergeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		344C75EA1D10C75B0077466A /* NumbersToPagesMailMergeUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 344C75FA1D10C75B0077466A /* Build configuration list for PBXNativeTarget "NumbersToPagesMailMergeUITests" */;
+			buildPhases = (
+				344C75E71D10C75B0077466A /* Sources */,
+				344C75E81D10C75B0077466A /* Frameworks */,
+				344C75E91D10C75B0077466A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				344C75ED1D10C75B0077466A /* PBXTargetDependency */,
+			);
+			name = NumbersToPagesMailMergeUITests;
+			productName = NumbersToPagesMailMergeUITests;
+			productReference = 344C75EB1D10C75B0077466A /* NumbersToPagesMailMergeUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		344C75C21D10C75B0077466A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = CIRC;
+				TargetAttributes = {
+					344C75C91D10C75B0077466A = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+					344C75DF1D10C75B0077466A = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 344C75C91D10C75B0077466A;
+					};
+					344C75EA1D10C75B0077466A = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 344C75C91D10C75B0077466A;
+					};
+				};
+			};
+			buildConfigurationList = 344C75C51D10C75B0077466A /* Build configuration list for PBXProject "NumbersToPagesMailMerge" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 344C75C11D10C75B0077466A;
+			productRefGroup = 344C75CB1D10C75B0077466A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				344C75C91D10C75B0077466A /* NumbersToPagesMailMerge */,
+				344C75DF1D10C75B0077466A /* NumbersToPagesMailMergeTests */,
+				344C75EA1D10C75B0077466A /* NumbersToPagesMailMergeUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		344C75C81D10C75B0077466A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				344C75D71D10C75B0077466A /* Assets.xcassets in Resources */,
+				344C75DA1D10C75B0077466A /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		344C75DE1D10C75B0077466A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		344C75E91D10C75B0077466A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		344C75C61D10C75B0077466A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				344C75D51D10C75B0077466A /* ViewController.m in Sources */,
+				344C75D21D10C75B0077466A /* main.m in Sources */,
+				344C75CF1D10C75B0077466A /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		344C75DC1D10C75B0077466A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				344C75E51D10C75B0077466A /* NumbersToPagesMailMergeTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		344C75E71D10C75B0077466A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				344C75F01D10C75B0077466A /* NumbersToPagesMailMergeUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		344C75E21D10C75B0077466A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 344C75C91D10C75B0077466A /* NumbersToPagesMailMerge */;
+			targetProxy = 344C75E11D10C75B0077466A /* PBXContainerItemProxy */;
+		};
+		344C75ED1D10C75B0077466A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 344C75C91D10C75B0077466A /* NumbersToPagesMailMerge */;
+			targetProxy = 344C75EC1D10C75B0077466A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		344C75D81D10C75B0077466A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				344C75D91D10C75B0077466A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		344C75F21D10C75B0077466A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		344C75F31D10C75B0077466A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		344C75F51D10C75B0077466A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = NumbersToPagesMailMerge/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.southern.cs.circ.NumbersToPagesMailMerge;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		344C75F61D10C75B0077466A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = NumbersToPagesMailMerge/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.southern.cs.circ.NumbersToPagesMailMerge;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		344C75F81D10C75B0077466A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = NumbersToPagesMailMergeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.southern.cs.circ.NumbersToPagesMailMergeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NumbersToPagesMailMerge.app/Contents/MacOS/NumbersToPagesMailMerge";
+			};
+			name = Debug;
+		};
+		344C75F91D10C75B0077466A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = NumbersToPagesMailMergeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.southern.cs.circ.NumbersToPagesMailMergeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NumbersToPagesMailMerge.app/Contents/MacOS/NumbersToPagesMailMerge";
+			};
+			name = Release;
+		};
+		344C75FB1D10C75B0077466A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = NumbersToPagesMailMergeUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.southern.cs.circ.NumbersToPagesMailMergeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = NumbersToPagesMailMerge;
+			};
+			name = Debug;
+		};
+		344C75FC1D10C75B0077466A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = NumbersToPagesMailMergeUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.southern.cs.circ.NumbersToPagesMailMergeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = NumbersToPagesMailMerge;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		344C75C51D10C75B0077466A /* Build configuration list for PBXProject "NumbersToPagesMailMerge" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				344C75F21D10C75B0077466A /* Debug */,
+				344C75F31D10C75B0077466A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		344C75F41D10C75B0077466A /* Build configuration list for PBXNativeTarget "NumbersToPagesMailMerge" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				344C75F51D10C75B0077466A /* Debug */,
+				344C75F61D10C75B0077466A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		344C75F71D10C75B0077466A /* Build configuration list for PBXNativeTarget "NumbersToPagesMailMergeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				344C75F81D10C75B0077466A /* Debug */,
+				344C75F91D10C75B0077466A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		344C75FA1D10C75B0077466A /* Build configuration list for PBXNativeTarget "NumbersToPagesMailMergeUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				344C75FB1D10C75B0077466A /* Debug */,
+				344C75FC1D10C75B0077466A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 344C75C21D10C75B0077466A /* Project object */;
+}
