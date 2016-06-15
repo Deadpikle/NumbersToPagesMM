@@ -11,6 +11,8 @@
 // 2) Allow user to set up tags for Pages (map columns to tags)
 // 3) Other nice things that a mail merge tool would need that isn't available in the tool
 // described here and available elsewhere: https://iworkautomation.com/pages/script-tags-data-merge.html
+// 4) Allow for find/replace text instead of the script tags (see #2)
+// 5) Can we do Word/Excel as well? Do those even have AppleScript capability? (I haven't looked.)
 
 // Misc help:
 // http://stackoverflow.com/questions/1968794/create-itunes-playlist-with-scripting-bridge
