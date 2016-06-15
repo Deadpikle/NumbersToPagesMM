@@ -14,6 +14,9 @@
 		344C75DA1D10C75B0077466A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 344C75D81D10C75B0077466A /* Main.storyboard */; };
 		344C75E51D10C75B0077466A /* NumbersToPagesMailMergeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 344C75E41D10C75B0077466A /* NumbersToPagesMailMergeTests.m */; };
 		344C75F01D10C75B0077466A /* NumbersToPagesMailMergeUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 344C75EF1D10C75B0077466A /* NumbersToPagesMailMergeUITests.m */; };
+		344C76031D10D0580077466A /* CHCSVParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 344C76011D10D0580077466A /* CHCSVParser.m */; };
+		344C76041D10D0580077466A /* CHCSVParserOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344C76021D10D0580077466A /* CHCSVParserOptions.swift */; };
+		344C76081D10D21E0077466A /* PersonInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 344C76071D10D21E0077466A /* PersonInfo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,13 @@
 		344C75EB1D10C75B0077466A /* NumbersToPagesMailMergeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NumbersToPagesMailMergeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		344C75EF1D10C75B0077466A /* NumbersToPagesMailMergeUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NumbersToPagesMailMergeUITests.m; sourceTree = "<group>"; };
 		344C75F11D10C75B0077466A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		344C75FD1D10C8260077466A /* Numbers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Numbers.h; sourceTree = "<group>"; };
+		344C75FE1D10C8260077466A /* Pages.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Pages.h; sourceTree = "<group>"; };
+		344C76001D10D0580077466A /* CHCSVParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHCSVParser.h; sourceTree = "<group>"; };
+		344C76011D10D0580077466A /* CHCSVParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHCSVParser.m; sourceTree = "<group>"; };
+		344C76021D10D0580077466A /* CHCSVParserOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHCSVParserOptions.swift; sourceTree = "<group>"; };
+		344C76061D10D21E0077466A /* PersonInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonInfo.h; sourceTree = "<group>"; };
+		344C76071D10D21E0077466A /* PersonInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonInfo.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +109,10 @@
 		344C75CC1D10C75B0077466A /* NumbersToPagesMailMerge */ = {
 			isa = PBXGroup;
 			children = (
+				344C75FF1D10D0580077466A /* CHCSVParser */,
+				344C76051D10D20D0077466A /* Models */,
+				344C75FD1D10C8260077466A /* Numbers.h */,
+				344C75FE1D10C8260077466A /* Pages.h */,
 				344C75CD1D10C75B0077466A /* AppDelegate.h */,
 				344C75CE1D10C75B0077466A /* AppDelegate.m */,
 				344C75D31D10C75B0077466A /* ViewController.h */,
@@ -135,6 +149,25 @@
 				344C75F11D10C75B0077466A /* Info.plist */,
 			);
 			path = NumbersToPagesMailMergeUITests;
+			sourceTree = "<group>";
+		};
+		344C75FF1D10D0580077466A /* CHCSVParser */ = {
+			isa = PBXGroup;
+			children = (
+				344C76001D10D0580077466A /* CHCSVParser.h */,
+				344C76011D10D0580077466A /* CHCSVParser.m */,
+				344C76021D10D0580077466A /* CHCSVParserOptions.swift */,
+			);
+			path = CHCSVParser;
+			sourceTree = "<group>";
+		};
+		344C76051D10D20D0077466A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				344C76061D10D21E0077466A /* PersonInfo.h */,
+				344C76071D10D21E0077466A /* PersonInfo.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,6 +299,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				344C76081D10D21E0077466A /* PersonInfo.m in Sources */,
+				344C76031D10D0580077466A /* CHCSVParser.m in Sources */,
+				344C76041D10D0580077466A /* CHCSVParserOptions.swift in Sources */,
 				344C75D51D10C75B0077466A /* ViewController.m in Sources */,
 				344C75D21D10C75B0077466A /* main.m in Sources */,
 				344C75CF1D10C75B0077466A /* AppDelegate.m in Sources */,
