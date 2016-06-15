@@ -45,4 +45,28 @@
     }
 }
 
+-(id)valueForKey:(NSString *)key {
+    if ([key isEqualToString:@"firstName"]) {
+        return self.firstName;
+    }
+    else if ([key isEqualToString:@"lastName"]) {
+        return self.lastName;
+    }
+    else if ([key isEqualToString:@"instrument"]) {
+        return self.instrument;
+    }
+    else if ([key isEqualToString:@"level"]) {
+        return self.level;
+    }
+    else if ([key isEqualToString:@"age"]) {
+        return [NSNumber numberWithInteger:self.age];
+    }
+    else if ([key isEqualToString:@"book"]) {
+        return [NSNumber numberWithInteger:self.book];
+    }
+    else if ([key isEqualToString:@"experience"]) {
+        return self.experience;
+    }
+    return nil;
+}
 @end

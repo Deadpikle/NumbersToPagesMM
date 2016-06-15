@@ -18,6 +18,9 @@
 		344C76041D10D0580077466A /* CHCSVParserOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344C76021D10D0580077466A /* CHCSVParserOptions.swift */; };
 		344C76081D10D21E0077466A /* PersonInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 344C76071D10D21E0077466A /* PersonInfo.m */; };
 		344C760A1D10D7B70077466A /* License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 344C76091D10D7B70077466A /* License.txt */; };
+		344C760C1D10E3EB0077466A /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 344C760B1D10E3EB0077466A /* ScriptingBridge.framework */; };
+		344C760F1D10E47E0077466A /* ReplaceItemInPages.applescript in Resources */ = {isa = PBXBuildFile; fileRef = 344C760E1D10E47E0077466A /* ReplaceItemInPages.applescript */; };
+		344C76111D10E7150077466A /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 344C76101D10E7150077466A /* Carbon.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +64,9 @@
 		344C76061D10D21E0077466A /* PersonInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonInfo.h; sourceTree = "<group>"; };
 		344C76071D10D21E0077466A /* PersonInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonInfo.m; sourceTree = "<group>"; };
 		344C76091D10D7B70077466A /* License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = License.txt; sourceTree = "<group>"; };
+		344C760B1D10E3EB0077466A /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = System/Library/Frameworks/ScriptingBridge.framework; sourceTree = SDKROOT; };
+		344C760E1D10E47E0077466A /* ReplaceItemInPages.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = ReplaceItemInPages.applescript; sourceTree = "<group>"; };
+		344C76101D10E7150077466A /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +74,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				344C76111D10E7150077466A /* Carbon.framework in Frameworks */,
+				344C760C1D10E3EB0077466A /* ScriptingBridge.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,6 +99,8 @@
 		344C75C11D10C75B0077466A = {
 			isa = PBXGroup;
 			children = (
+				344C76101D10E7150077466A /* Carbon.framework */,
+				344C760B1D10E3EB0077466A /* ScriptingBridge.framework */,
 				344C75CC1D10C75B0077466A /* NumbersToPagesMailMerge */,
 				344C75E31D10C75B0077466A /* NumbersToPagesMailMergeTests */,
 				344C75EE1D10C75B0077466A /* NumbersToPagesMailMergeUITests */,
@@ -113,6 +123,7 @@
 			children = (
 				344C75FF1D10D0580077466A /* CHCSVParser */,
 				344C76051D10D20D0077466A /* Models */,
+				344C760D1D10E4480077466A /* Scripts */,
 				344C75FD1D10C8260077466A /* Numbers.h */,
 				344C75FE1D10C8260077466A /* Pages.h */,
 				344C75CD1D10C75B0077466A /* AppDelegate.h */,
@@ -171,6 +182,14 @@
 				344C76071D10D21E0077466A /* PersonInfo.m */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		344C760D1D10E4480077466A /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				344C760E1D10E47E0077466A /* ReplaceItemInPages.applescript */,
+			);
+			name = Scripts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -277,6 +296,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				344C75D71D10C75B0077466A /* Assets.xcassets in Resources */,
+				344C760F1D10E47E0077466A /* ReplaceItemInPages.applescript in Resources */,
 				344C75DA1D10C75B0077466A /* Main.storyboard in Resources */,
 				344C760A1D10D7B70077466A /* License.txt in Resources */,
 			);
