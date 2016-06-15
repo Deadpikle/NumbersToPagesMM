@@ -21,6 +21,7 @@
 		344C760C1D10E3EB0077466A /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 344C760B1D10E3EB0077466A /* ScriptingBridge.framework */; };
 		344C760F1D10E47E0077466A /* ReplaceItemInPages.applescript in Resources */ = {isa = PBXBuildFile; fileRef = 344C760E1D10E47E0077466A /* ReplaceItemInPages.applescript */; };
 		344C76111D10E7150077466A /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 344C76101D10E7150077466A /* Carbon.framework */; };
+		344C76131D1190170077466A /* DuplicatePage.applescript in Resources */ = {isa = PBXBuildFile; fileRef = 344C76121D1190170077466A /* DuplicatePage.applescript */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		344C760B1D10E3EB0077466A /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = System/Library/Frameworks/ScriptingBridge.framework; sourceTree = SDKROOT; };
 		344C760E1D10E47E0077466A /* ReplaceItemInPages.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = ReplaceItemInPages.applescript; sourceTree = "<group>"; };
 		344C76101D10E7150077466A /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
+		344C76121D1190170077466A /* DuplicatePage.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = DuplicatePage.applescript; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				344C760E1D10E47E0077466A /* ReplaceItemInPages.applescript */,
+				344C76121D1190170077466A /* DuplicatePage.applescript */,
 			);
 			name = Scripts;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 				344C75D71D10C75B0077466A /* Assets.xcassets in Resources */,
 				344C760F1D10E47E0077466A /* ReplaceItemInPages.applescript in Resources */,
 				344C75DA1D10C75B0077466A /* Main.storyboard in Resources */,
+				344C76131D1190170077466A /* DuplicatePage.applescript in Resources */,
 				344C760A1D10D7B70077466A /* License.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

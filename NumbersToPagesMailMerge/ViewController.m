@@ -144,6 +144,16 @@
     }
 }
 
+-(void)addPage {
+    /*
+    // This doesn't seem to work for adding a page. Hrm.
+    PagesPage *page = [[[pages classForScriptingClass:@"page"] alloc] init];
+    //[[pages.documents firstObject] insertObject:page atIndex:0];
+    PagesDocument *docdoc = [[pages.documents firstObject] get];
+    [[docdoc pages] insertObject:page atIndex:0];
+    return;*/
+}
+
 - (IBAction)startConvert:(id)sender {
     if ([self.numbersInputPath.stringValue isEqualToString:@""])
         return;
