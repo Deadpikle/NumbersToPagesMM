@@ -13,6 +13,10 @@
 // described here and available elsewhere: https://iworkautomation.com/pages/script-tags-data-merge.html
 // 4) Allow for find/replace text instead of the script tags (see #2)
 // 5) Can we do Word/Excel as well? Do those even have AppleScript capability? (I haven't looked.)
+// 6) Code organization/cleanup
+// 7) Is there any real way to duplicate/copy a page without a keyboard shortcut in Pages?! (X_X)
+// Unless we can AppleScript a way to manually select the first page to duplicate, we're kind of out
+// of luck with a true mail merge in one document........
 
 // Misc help:
 // http://stackoverflow.com/questions/1968794/create-itunes-playlist-with-scripting-bridge
