@@ -11,6 +11,26 @@
 
 // firstName, lastName, instrument, level, age, book, experience
 
+// Use these for KVC
+FOUNDATION_EXPORT NSString *const FirstNameColumnName;
+FOUNDATION_EXPORT NSString *const LastNameColumnName;
+FOUNDATION_EXPORT NSString *const InstrumentColumnName;
+FOUNDATION_EXPORT NSString *const LevelColumnName;
+FOUNDATION_EXPORT NSString *const AgeColumnName;
+FOUNDATION_EXPORT NSString *const BookColumnName;
+FOUNDATION_EXPORT NSString *const SightReadingColumnName;
+FOUNDATION_EXPORT NSString *const ExperienceColumnName;
+
+// These are used for matching up with the Pages document
+FOUNDATION_EXPORT NSString *const FirstNameTagName;
+FOUNDATION_EXPORT NSString *const LastNameTagName;
+FOUNDATION_EXPORT NSString *const InstrumentTagName;
+FOUNDATION_EXPORT NSString *const LevelTagName;
+FOUNDATION_EXPORT NSString *const AgeTagName;
+FOUNDATION_EXPORT NSString *const BookTagName;
+FOUNDATION_EXPORT NSString *const SightReadingTagName;
+FOUNDATION_EXPORT NSString *const ExperienceTagName;
+
 @interface PersonInfo : NSObject
 
 @property NSString *firstName;
@@ -19,6 +39,7 @@
 @property NSString *level;
 @property int age;
 @property int book;
+@property NSString *sightReading;
 @property NSString *experience;
 
 -(id)initWithDictionary:(NSDictionary*)dict;

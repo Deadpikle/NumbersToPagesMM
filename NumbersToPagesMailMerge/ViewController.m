@@ -17,6 +17,7 @@
 // 7) Is there any real way to duplicate/copy a page without a keyboard shortcut in Pages?! (X_X)
 // Unless we can AppleScript a way to manually select the first page to duplicate, we're kind of out
 // of luck with a true mail merge in one document........
+// Perhaps we can generate all the pages separately, then create a new document with all the pages?
 
 // Misc help:
 // http://stackoverflow.com/questions/1968794/create-itunes-playlist-with-scripting-bridge
@@ -47,7 +48,6 @@
     [super viewDidLoad];
 
     // Do any additional setup after loading the view.
-    NSLog(@"View did load!");
 }
 
 - (void)setRepresentedObject:(id)representedObject {
@@ -142,7 +142,7 @@
             else
             {
                 // report any errors from 'errors'
-                [self showError:@"cowabunga!"];
+                //[self showError:@"cowabunga!"];
             }
         }
     }
