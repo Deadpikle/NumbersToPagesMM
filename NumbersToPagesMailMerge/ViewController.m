@@ -96,7 +96,13 @@
         NSLog(@"Got the doc!");
         // NSAppleEventDescriptor *active = [NSAppleEventDescriptor descriptorWithEnumCode:OFProjectStatusActive];
         // Export the numbers data to CSV
-        NSString *tmpPath = @"/Users/schoolofcomputingmacbook/Documents/Personal-Projects/tmp.csv";
+        NSString *docsDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+        NSString *appDir = [docsDir stringByAppendingPathComponent:@"NumbersToPagesMM"];
+        
+        if ([[NSFileManager defaultManager] fileExistsAtPath:appDir isDirectory:nil]) {
+            [[NSFileManager defaultManager] createDirectoryAtPath:appDir withIntermediateDirectories:YES attributes:nil error:nil];
+        }
+        NSString *tmpPath = [appDir stringByAppendingPathComponent:@"tmp.csv"];
         [numbersDocument exportTo:[NSURL fileURLWithPath:tmpPath] as:NumbersExportFormatCSV withProperties:@{}];
         
         // Parse the CSV
