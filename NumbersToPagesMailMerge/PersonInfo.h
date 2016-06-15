@@ -31,17 +31,23 @@ FOUNDATION_EXPORT NSString *const BookTagName;
 FOUNDATION_EXPORT NSString *const SightReadingTagName;
 FOUNDATION_EXPORT NSString *const ExperienceTagName;
 
+// Everything is a string because that makes things easy. :3 (TODO: Maybe someday, don't use all strings.)
 @interface PersonInfo : NSObject
 
 @property NSString *firstName;
 @property NSString *lastName;
 @property NSString *instrument;
 @property NSString *level;
-@property int age;
-@property int book;
+@property NSString *age;
+@property NSString *book;
 @property NSString *sightReading;
 @property NSString *experience;
 
 -(id)initWithDictionary:(NSDictionary*)dict;
+
++(NSUInteger)numFields;
+
+
+-(id)valueForTagKey:(NSString *)key;
 
 @end

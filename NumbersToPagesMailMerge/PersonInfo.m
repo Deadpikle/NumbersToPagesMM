@@ -40,6 +40,10 @@ NSString *const ExperienceTagName = @"Orchestra"; // Experience ?
     return self;
 }
 
++(NSUInteger)numFields {
+    return 8;
+}
+
 -(void)setValue:(id)value forKey:(NSString *)key {
     if ([key isEqualToString:FirstNameColumnName]) {
         self.firstName = [NSString stringWithString:value];
@@ -54,10 +58,10 @@ NSString *const ExperienceTagName = @"Orchestra"; // Experience ?
         self.level = [NSString stringWithString:value];
     }
     else if ([key isEqualToString:AgeColumnName]) {
-        self.age = [value intValue];
+        self.age = [NSString stringWithString:value];
     }
     else if ([key isEqualToString:BookColumnName]) {
-        self.book = [value intValue];
+        self.book = [NSString stringWithString:value];
     }
     else if ([key isEqualToString:ExperienceColumnName]) {
         self.experience = [NSString stringWithString:value];
@@ -81,15 +85,43 @@ NSString *const ExperienceTagName = @"Orchestra"; // Experience ?
         return self.level;
     }
     else if ([key isEqualToString:AgeColumnName]) {
-        return [NSNumber numberWithInteger:self.age];
+        return self.age;
     }
     else if ([key isEqualToString:BookColumnName]) {
-        return [NSNumber numberWithInteger:self.book];
+        return self.book;
     }
     else if ([key isEqualToString:ExperienceColumnName]) {
         return self.experience;
     }
     else if ([key isEqualToString:SightReadingColumnName]) {
+        return self.sightReading;
+    }
+    return nil;
+}
+
+-(id)valueForTagKey:(NSString *)key {
+    if ([key isEqualToString:FirstNameTagName]) {
+        return self.firstName;
+    }
+    else if ([key isEqualToString:LastNameTagName]) {
+        return self.lastName;
+    }
+    else if ([key isEqualToString:InstrumentTagName]) {
+        return self.instrument;
+    }
+    else if ([key isEqualToString:LevelTagName]) {
+        return self.level;
+    }
+    else if ([key isEqualToString:AgeTagName]) {
+        return self.age;
+    }
+    else if ([key isEqualToString:BookTagName]) {
+        return self.book;
+    }
+    else if ([key isEqualToString:ExperienceTagName]) {
+        return self.experience;
+    }
+    else if ([key isEqualToString:SightReadingTagName]) {
         return self.sightReading;
     }
     return nil;

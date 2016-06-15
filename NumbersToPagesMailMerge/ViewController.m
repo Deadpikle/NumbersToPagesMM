@@ -155,7 +155,22 @@
     //[[pages.documents firstObject] insertObject:page atIndex:0];
     PagesDocument *docdoc = [[pages.documents firstObject] get];
     [[docdoc pages] insertObject:page atIndex:0];
-    return;*/
+     return;*/
+    // TODO: error checking; return BOOL
+    NSString* path = [[NSBundle mainBundle] pathForResource:@"DuplicatePage" ofType:@"applescript"];
+    if (path != nil)
+    {
+        NSURL* url = [NSURL fileURLWithPath:path];
+        if (url != nil)
+        {
+            NSDictionary* errors = [NSDictionary dictionary];
+            NSAppleScript* appleScript = [[NSAppleScript alloc] initWithContentsOfURL:url error:&errors];
+            if (appleScript != nil)
+            {
+                [appleScript executeAndReturnError:nil];
+            }
+        }
+    }
 }
 
 - (IBAction)startConvert:(id)sender {
@@ -216,26 +231,47 @@
         if (pagesDocument) {
             SBElementArray<PagesPlaceholderText *> *placeholderTexts = [pagesDocument placeholderTexts];
 //            NSArray *items = [placeholderTexts get]; // returns strings
-            PersonInfo *currPersonInfo = [personInfo firstObject];
             unsigned long numToProcess = (unsigned long)[placeholderTexts count];
-            if (currPersonInfo) {
-                int numProcessed = 0;
-                while (numProcessed < numToProcess) {
+            // First, see if you need to duplicate pages. If you do, regrab the placeholder texts and such after duplicating.
+            NSUInteger fieldsRequired = personInfo.count * [PersonInfo numFields];
+            NSUInteger numberOfPersonInfoFields = [PersonInfo numFields];
+            while (fieldsRequired > numToProcess) {
+                [self addPage];
+                placeholderTexts = [pagesDocument placeholderTexts];
+                numToProcess = (unsigned long)[placeholderTexts count];
+                fieldsRequired = personInfo.count * numberOfPersonInfoFields;
+            }
+            // Can now start filling in the document!
+            PersonInfo *currPersonInfo = [personInfo firstObject];
+            NSUInteger currPersonInfoIndex = 0;
+            NSUInteger numProcessed = 0;
+            while (numProcessed < numToProcess) {
+                if (currPersonInfo) {
                     // ...if I iterate through backwards, it works all the time. If I iterate through forwards,
                     // it stops returning valid items halfway through. (Could it be because the placeholders
                     // are no longer returned by the document after they've been edited, thus the array is getting "smaller"
                     // by 1 every time I replace a placeholder? Probably, especially given the return-references nature
                     // of the Scripting Bridge.
-                    // If you want a for() loop [for (i in collection) loops do not work]
+                    // If you want a for() loop [for (i in collection) loops do not work]:
                     // PagesPlaceholderText *text = [placeholderTexts objectAtIndex:numToProcess - j - 1];
                     PagesPlaceholderText *text = [placeholderTexts firstObject];
                     if (text.tag && ![text.tag isEqualToString:@""]) {
-                        NSLog(@"Tag: %@", text.tag);
-                        [self runApplescriptForTag:text.tag withReplacementText:currPersonInfo.firstName];
+                        //NSLog(@"Tag: %@", text.tag);
+                        NSString *data = [currPersonInfo valueForTagKey:text.tag];
+                        [self runApplescriptForTag:text.tag withReplacementText:data];
                     }
                     numProcessed++;
+                    if (numProcessed % numberOfPersonInfoFields == 0) {
+                        // Filled out all fields for a person (since we seem to be lucky and not get the next set of fields
+                        // until we've filled out one set of fields
+                        if (++currPersonInfoIndex <= personInfo.count - 1) {
+                            currPersonInfo = personInfo[currPersonInfoIndex];
+                        }
+                        else {
+                            break;
+                        }
+                    }
                 }
-                
             }
         }
         else {
