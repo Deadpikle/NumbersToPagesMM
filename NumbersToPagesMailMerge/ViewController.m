@@ -246,6 +246,7 @@
             NSUInteger currPersonInfoIndex = 0;
             NSUInteger numProcessed = 0;
             while (numProcessed < numToProcess) {
+                PagesPlaceholderText *text = [placeholderTexts firstObject];
                 if (currPersonInfo) {
                     // ...if I iterate through backwards, it works all the time. If I iterate through forwards,
                     // it stops returning valid items halfway through. (Could it be because the placeholders
@@ -254,7 +255,6 @@
                     // of the Scripting Bridge.
                     // If you want a for() loop [for (i in collection) loops do not work]:
                     // PagesPlaceholderText *text = [placeholderTexts objectAtIndex:numToProcess - j - 1];
-                    PagesPlaceholderText *text = [placeholderTexts firstObject];
                     if (text.tag && ![text.tag isEqualToString:@""]) {
                         //NSLog(@"Tag: %@", text.tag);
                         NSString *data = [currPersonInfo valueForTagKey:text.tag];
@@ -264,13 +264,16 @@
                     if (numProcessed % numberOfPersonInfoFields == 0) {
                         // Filled out all fields for a person (since we seem to be lucky and not get the next set of fields
                         // until we've filled out one set of fields
-                        if (++currPersonInfoIndex <= personInfo.count - 1) {
+                        if (++currPersonInfoIndex <= personInfo.count - 1)
                             currPersonInfo = personInfo[currPersonInfoIndex];
-                        }
-                        else {
-                            break;
-                        }
+                        else
+                            currPersonInfo = nil;
                     }
+                }
+                else {
+                    // Clear out all the other fields
+                    [self runApplescriptForTag:text.tag withReplacementText:@""];
+                    numProcessed++;
                 }
             }
         }
