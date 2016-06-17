@@ -22,6 +22,11 @@
 		344C760F1D10E47E0077466A /* ReplaceItemInPages.applescript in Resources */ = {isa = PBXBuildFile; fileRef = 344C760E1D10E47E0077466A /* ReplaceItemInPages.applescript */; };
 		344C76111D10E7150077466A /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 344C76101D10E7150077466A /* Carbon.framework */; };
 		344C76131D1190170077466A /* DuplicatePage.applescript in Resources */ = {isa = PBXBuildFile; fileRef = 344C76121D1190170077466A /* DuplicatePage.applescript */; };
+		344C761B1D1428D90077466A /* Merge-48.png in Resources */ = {isa = PBXBuildFile; fileRef = 344C761A1D1428D90077466A /* Merge-48.png */; };
+		344C761F1D1429520077466A /* Merge-16.png in Resources */ = {isa = PBXBuildFile; fileRef = 344C761C1D1429520077466A /* Merge-16.png */; };
+		344C76201D1429520077466A /* Merge-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 344C761D1D1429520077466A /* Merge-32.png */; };
+		344C76211D1429520077466A /* Merge-64.png in Resources */ = {isa = PBXBuildFile; fileRef = 344C761E1D1429520077466A /* Merge-64.png */; };
+		344C76251D1429D70077466A /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 344C76241D1429D70077466A /* Credits.rtf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +74,11 @@
 		344C760E1D10E47E0077466A /* ReplaceItemInPages.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = ReplaceItemInPages.applescript; sourceTree = "<group>"; };
 		344C76101D10E7150077466A /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		344C76121D1190170077466A /* DuplicatePage.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = DuplicatePage.applescript; sourceTree = "<group>"; };
+		344C761A1D1428D90077466A /* Merge-48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Merge-48.png"; sourceTree = "<group>"; };
+		344C761C1D1429520077466A /* Merge-16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Merge-16.png"; sourceTree = "<group>"; };
+		344C761D1D1429520077466A /* Merge-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Merge-32.png"; sourceTree = "<group>"; };
+		344C761E1D1429520077466A /* Merge-64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Merge-64.png"; sourceTree = "<group>"; };
+		344C76241D1429D70077466A /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,7 +153,12 @@
 		344C75D01D10C75B0077466A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				344C761C1D1429520077466A /* Merge-16.png */,
+				344C761D1D1429520077466A /* Merge-32.png */,
+				344C761E1D1429520077466A /* Merge-64.png */,
+				344C761A1D1428D90077466A /* Merge-48.png */,
 				344C75D11D10C75B0077466A /* main.m */,
+				344C76241D1429D70077466A /* Credits.rtf */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -299,9 +314,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				344C75D71D10C75B0077466A /* Assets.xcassets in Resources */,
+				344C76201D1429520077466A /* Merge-32.png in Resources */,
 				344C760F1D10E47E0077466A /* ReplaceItemInPages.applescript in Resources */,
+				344C761B1D1428D90077466A /* Merge-48.png in Resources */,
 				344C75DA1D10C75B0077466A /* Main.storyboard in Resources */,
+				344C76251D1429D70077466A /* Credits.rtf in Resources */,
+				344C76211D1429520077466A /* Merge-64.png in Resources */,
 				344C76131D1190170077466A /* DuplicatePage.applescript in Resources */,
+				344C761F1D1429520077466A /* Merge-16.png in Resources */,
 				344C760A1D10D7B70077466A /* License.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -553,6 +573,7 @@
 				344C75F61D10C75B0077466A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		344C75F71D10C75B0077466A /* Build configuration list for PBXNativeTarget "NumbersToPagesMailMergeTests" */ = {
 			isa = XCConfigurationList;
@@ -561,6 +582,7 @@
 				344C75F91D10C75B0077466A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		344C75FA1D10C75B0077466A /* Build configuration list for PBXNativeTarget "NumbersToPagesMailMergeUITests" */ = {
 			isa = XCConfigurationList;
@@ -569,6 +591,7 @@
 				344C75FC1D10C75B0077466A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -18,6 +18,12 @@
 // Unless we can AppleScript a way to manually select the first page to duplicate, we're kind of out
 // of luck with a true mail merge in one document........
 // Perhaps we can generate all the pages separately, then create a new document with all the pages?
+// 8) Choose sheet (this only works with one sheet in Numbers since then the csv export makes a folder)
+//   add an error if it can't find the file (error: more than 1 sheet!)
+// 9) items with commas already in them come in with quotes in the strings >_>
+// 10) refactor refactor refactor
+
+// TODO: add alert on finished because duh
 
 // Misc help:
 // http://stackoverflow.com/questions/1968794/create-itunes-playlist-with-scripting-bridge
@@ -35,10 +41,17 @@
 @property (weak) IBOutlet NSTextField *numbersInputPath;
 @property (weak) IBOutlet NSTextField *pagesInputPath;
 
+
 - (IBAction)chooseNumbersInputPath:(id)sender;
 - (IBAction)choosePagesInputPath:(id)sender;
 
 - (IBAction)startConvert:(id)sender;
+- (IBAction)testNumbersColumns:(id)sender;
+- (IBAction)testPagesScriptTags:(id)sender;
+- (IBAction)testPagesDuplicate:(id)sender;
+@property (unsafe_unretained) IBOutlet NSTextView *numbersColumns;
+@property (unsafe_unretained) IBOutlet NSTextView *pagesTags;
+@property (weak) IBOutlet NSProgressIndicator *activityIndicator;
 
 @end
 
@@ -46,14 +59,24 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
     // Do any additional setup after loading the view.
+    self.activityIndicator.hidden = YES;
 }
 
 - (void)setRepresentedObject:(id)representedObject {
     [super setRepresentedObject:representedObject];
 
     // Update the view, if already loaded.
+}
+
+-(void)startProgressIndicator {
+    [self.activityIndicator startAnimation:self];
+    self.activityIndicator.hidden = NO;
+}
+
+-(void)stopProgressIndicator {
+    [self.activityIndicator stopAnimation:self];
+    self.activityIndicator.hidden = YES;
 }
 
 -(void)selectFileOfType:(NSString*)type forTextField:(NSTextField*)textField {
@@ -80,6 +103,15 @@
 
 - (IBAction)choosePagesInputPath:(id)sender {
     [self selectFileOfType:@"pages" forTextField:self.pagesInputPath];
+}
+
+-(void)showMessage:(NSString*)errorMessage {
+    NSAlert *alert = [[NSAlert alloc] init];
+    [alert addButtonWithTitle:@"OK"];
+    [alert setMessageText:@"Info:"];
+    [alert setInformativeText:errorMessage];
+    [alert setAlertStyle:NSWarningAlertStyle];
+    [alert runModal];
 }
 
 -(void)showError:(NSString*)errorMessage {
@@ -176,6 +208,159 @@
 - (IBAction)startConvert:(id)sender {
     if ([self.numbersInputPath.stringValue isEqualToString:@""])
         return;
+    [self startProgressIndicator];
+    dispatch_queue_t backgroundQueue = dispatch_queue_create("com.pikleproductions.mailmerge", NULL);
+    
+    dispatch_async(backgroundQueue, ^(void) {
+        NumbersApplication *numbers = [SBApplication applicationWithBundleIdentifier:@"com.apple.iWork.Numbers"];
+        if (!numbers) {
+            NSLog(@"No numbers :(");
+            [self stopProgressIndicator];
+            return;
+        }
+        if ([numbers isRunning])  {
+            NSLog(@"Numbers is already running");
+            // TODO: see if file already open. if so, use NumbersDocument *obj already open (?)
+        }
+        NumbersDocument *numbersDocument = [numbers open:self.numbersInputPath.stringValue];
+        if (numbersDocument) {
+            NSLog(@"Got the doc!");
+            // NSAppleEventDescriptor *active = [NSAppleEventDescriptor descriptorWithEnumCode:OFProjectStatusActive];
+            // Export the numbers data to CSV
+            NSString *docsDir = [NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES) firstObject];
+            NSString *appDir = [docsDir stringByAppendingPathComponent:@"NumbersToPagesMM"];
+            
+            if (![[NSFileManager defaultManager] fileExistsAtPath:appDir isDirectory:nil]) {
+                [[NSFileManager defaultManager] createDirectoryAtPath:appDir withIntermediateDirectories:YES attributes:nil error:nil];
+            }
+            NSString *tmpPath = [appDir stringByAppendingPathComponent:@"tmp.csv"];
+            [numbersDocument exportTo:[NSURL fileURLWithPath:tmpPath] as:NumbersExportFormatCSV withProperties:@{}];
+            
+            // Parse the CSV
+            NSString *dataStr = [NSString stringWithContentsOfFile:tmpPath encoding:NSUTF8StringEncoding error:nil];
+            if (!dataStr || [dataStr isEqualToString:@""]) {
+                dispatch_async(dispatch_get_main_queue(), ^(void) {
+                    [self showError:@"Couldn't get column names! Please only have 1 sheet in the Numbers document. This sheet may only have 1 table."];
+                    [self stopProgressIndicator];
+                });
+                return;
+            }
+            NSArray *csvData = [dataStr CSVComponentsWithOptions:CHCSVParserOptionsUsesFirstLineAsKeys];
+            if ([csvData count] == 0) {
+                dispatch_async(dispatch_get_main_queue(), ^(void) {
+                    [self showError:@"No data in Numbers file!"];
+                    [self stopProgressIndicator];
+                });
+                return;
+            }
+            //NSLog(@"Got csv data: %@", csvData);
+            // firstName, lastName, instrument, level, age, book, experience
+            NSMutableArray<PersonInfo*> *personInfo = [NSMutableArray array];
+            for (NSDictionary *dict in csvData) {
+                PersonInfo *info = [[PersonInfo alloc] initWithDictionary:dict];
+                if (info) {
+                    // enforce first name, last name, age, and book
+                    if (![info.firstName isEqualToString:@""] &&
+                        ![info.lastName isEqualToString:@""] &&
+                        info.age != 0 &&
+                        info.book != 0) {
+                        [personInfo addObject:info];
+                    }
+                }
+            }
+            if (personInfo.count == 0) {
+                dispatch_async(dispatch_get_main_queue(), ^(void) {
+                    [self showError:@"Couldn't extract person info!"];
+                    [self stopProgressIndicator];
+                });
+                return;
+            }
+            // Now insert into Pages!
+            PagesApplication *pages = [SBApplication applicationWithBundleIdentifier:@"com.apple.iWork.Pages"];
+            if (!pages) {
+                NSLog(@"No pages :(");
+                [self stopProgressIndicator];
+                return;
+            }
+            if ([pages isRunning])  {
+                NSLog(@"Pages is already running");
+                // TODO: see if file already open. if so, use PagesDocument *obj already open (?)
+            }
+            PagesDocument *pagesDocument = [[pages open:self.pagesInputPath.stringValue] get];
+            if (pagesDocument) {
+                SBElementArray<PagesPlaceholderText *> *placeholderTexts = [pagesDocument placeholderTexts];
+                //            NSArray *items = [placeholderTexts get]; // returns strings
+                unsigned long numToProcess = (unsigned long)[placeholderTexts count];
+                // First, see if you need to duplicate pages. If you do, regrab the placeholder texts and such after duplicating.
+                NSUInteger fieldsRequired = personInfo.count * [PersonInfo numFields];
+                NSUInteger numberOfPersonInfoFields = [PersonInfo numFields];
+                while (fieldsRequired > numToProcess) {
+                    [self addPage];
+                    placeholderTexts = [pagesDocument placeholderTexts];
+                    if (numToProcess == (unsigned long)[placeholderTexts count]) {
+                        dispatch_async(dispatch_get_main_queue(), ^(void) {
+                            [self showError:@"Couldn't duplicate page! Did you remember to select it in Pages?"];
+                            [self stopProgressIndicator];
+                        });
+                        return;
+                    }
+                    numToProcess = (unsigned long)[placeholderTexts count];
+                    fieldsRequired = personInfo.count * numberOfPersonInfoFields;
+                }
+                // Can now start filling in the document!
+                PersonInfo *currPersonInfo = [personInfo firstObject];
+                NSUInteger currPersonInfoIndex = 0;
+                NSUInteger numProcessed = 0;
+                while (numProcessed < numToProcess) {
+                    PagesPlaceholderText *text = [placeholderTexts firstObject];
+                    if (currPersonInfo) {
+                        // ...if I iterate through backwards, it works all the time. If I iterate through forwards,
+                        // it stops returning valid items halfway through. (Could it be because the placeholders
+                        // are no longer returned by the document after they've been edited, thus the array is getting "smaller"
+                        // by 1 every time I replace a placeholder? Probably, especially given the return-references nature
+                        // of the Scripting Bridge.
+                        // If you want a for() loop [for (i in collection) loops do not work]:
+                        // PagesPlaceholderText *text = [placeholderTexts objectAtIndex:numToProcess - j - 1];
+                        if (text.tag && ![text.tag isEqualToString:@""]) {
+                            //NSLog(@"Tag: %@", text.tag);
+                            NSString *data = [currPersonInfo valueForTagKey:text.tag];
+                            [self runApplescriptForTag:text.tag withReplacementText:data];
+                        }
+                        numProcessed++;
+                        if (numProcessed % numberOfPersonInfoFields == 0) {
+                            // Filled out all fields for a person (since we seem to be lucky and not get the next set of fields
+                            // until we've filled out one set of fields
+                            if (++currPersonInfoIndex <= personInfo.count - 1)
+                                currPersonInfo = personInfo[currPersonInfoIndex];
+                            else
+                                currPersonInfo = nil;
+                        }
+                    }
+                    else {
+                        // Clear out all the other fields
+                        [self runApplescriptForTag:text.tag withReplacementText:@""];
+                        numProcessed++;
+                    }
+                }
+            }
+            else {
+                dispatch_async(dispatch_get_main_queue(), ^(void) {
+                    [self showError:@"Couldn't open the Pages document!"];
+                    [self stopProgressIndicator];
+                });
+            }
+        }
+        else {
+            dispatch_async(dispatch_get_main_queue(), ^(void) {
+                [self showError:@"Couldn't open the Numbers document!"];
+                [self stopProgressIndicator];
+            });
+        }
+    });
+}
+
+- (IBAction)testNumbersColumns:(id)sender {
+    // TODO: refactor
     NumbersApplication *numbers = [SBApplication applicationWithBundleIdentifier:@"com.apple.iWork.Numbers"];
     if (!numbers) {
         NSLog(@"No numbers :(");
@@ -197,93 +382,62 @@
             [[NSFileManager defaultManager] createDirectoryAtPath:appDir withIntermediateDirectories:YES attributes:nil error:nil];
         }
         NSString *tmpPath = [appDir stringByAppendingPathComponent:@"tmp.csv"];
+        if ([[NSFileManager defaultManager] fileExistsAtPath:tmpPath]) {
+            [[NSFileManager defaultManager] removeItemAtPath:tmpPath error:nil];
+        }
         [numbersDocument exportTo:[NSURL fileURLWithPath:tmpPath] as:NumbersExportFormatCSV withProperties:@{}];
         
         // Parse the CSV
         NSString *dataStr = [NSString stringWithContentsOfFile:tmpPath encoding:NSUTF8StringEncoding error:nil];
-        NSArray *csvData = [dataStr CSVComponentsWithOptions:CHCSVParserOptionsUsesFirstLineAsKeys];
-        //NSLog(@"Got csv data: %@", csvData);
-        // firstName, lastName, instrument, level, age, book, experience
-        NSMutableArray<PersonInfo*> *personInfo = [NSMutableArray array];
-        for (NSDictionary *dict in csvData) {
-            PersonInfo *info = [[PersonInfo alloc] initWithDictionary:dict];
-            if (info) {
-                // enforce first name, last name, age, and book
-                if (![info.firstName isEqualToString:@""] &&
-                    ![info.lastName isEqualToString:@""] &&
-                    info.age != 0 &&
-                    info.book != 0) {
-                    [personInfo addObject:info];
-                }
-            }
-        }
-        // Now insert into Pages!
-        PagesApplication *pages = [SBApplication applicationWithBundleIdentifier:@"com.apple.iWork.Pages"];
-        if (!pages) {
-            NSLog(@"No pages :(");
+        if (!dataStr || [dataStr isEqualToString:@""]) {
+            [self showError:@"Couldn't get column names! Please only have 1 sheet in the Numbers document. This sheet may only have 1 table."];
             return;
         }
-        if ([pages isRunning])  {
-            NSLog(@"Pages is already running");
-            // TODO: see if file already open. if so, use PagesDocument *obj already open (?)
+        NSArray *csvData = [dataStr CSVComponentsWithOptions:CHCSVParserOptionsUsesFirstLineAsKeys];
+        if ([csvData count] == 0) {
+            [self showError:@"No data in Numbers file!"];
+            return;
         }
-        PagesDocument *pagesDocument = [[pages open:self.pagesInputPath.stringValue] get];
-        if (pagesDocument) {
-            SBElementArray<PagesPlaceholderText *> *placeholderTexts = [pagesDocument placeholderTexts];
-//            NSArray *items = [placeholderTexts get]; // returns strings
-            unsigned long numToProcess = (unsigned long)[placeholderTexts count];
-            // First, see if you need to duplicate pages. If you do, regrab the placeholder texts and such after duplicating.
-            NSUInteger fieldsRequired = personInfo.count * [PersonInfo numFields];
-            NSUInteger numberOfPersonInfoFields = [PersonInfo numFields];
-            while (fieldsRequired > numToProcess) {
-                [self addPage];
-                placeholderTexts = [pagesDocument placeholderTexts];
-                numToProcess = (unsigned long)[placeholderTexts count];
-                fieldsRequired = personInfo.count * numberOfPersonInfoFields;
-            }
-            // Can now start filling in the document!
-            PersonInfo *currPersonInfo = [personInfo firstObject];
-            NSUInteger currPersonInfoIndex = 0;
-            NSUInteger numProcessed = 0;
-            while (numProcessed < numToProcess) {
-                PagesPlaceholderText *text = [placeholderTexts firstObject];
-                if (currPersonInfo) {
-                    // ...if I iterate through backwards, it works all the time. If I iterate through forwards,
-                    // it stops returning valid items halfway through. (Could it be because the placeholders
-                    // are no longer returned by the document after they've been edited, thus the array is getting "smaller"
-                    // by 1 every time I replace a placeholder? Probably, especially given the return-references nature
-                    // of the Scripting Bridge.
-                    // If you want a for() loop [for (i in collection) loops do not work]:
-                    // PagesPlaceholderText *text = [placeholderTexts objectAtIndex:numToProcess - j - 1];
-                    if (text.tag && ![text.tag isEqualToString:@""]) {
-                        //NSLog(@"Tag: %@", text.tag);
-                        NSString *data = [currPersonInfo valueForTagKey:text.tag];
-                        [self runApplescriptForTag:text.tag withReplacementText:data];
-                    }
-                    numProcessed++;
-                    if (numProcessed % numberOfPersonInfoFields == 0) {
-                        // Filled out all fields for a person (since we seem to be lucky and not get the next set of fields
-                        // until we've filled out one set of fields
-                        if (++currPersonInfoIndex <= personInfo.count - 1)
-                            currPersonInfo = personInfo[currPersonInfoIndex];
-                        else
-                            currPersonInfo = nil;
-                    }
-                }
-                else {
-                    // Clear out all the other fields
-                    [self runApplescriptForTag:text.tag withReplacementText:@""];
-                    numProcessed++;
-                }
+        NSDictionary *dict = [csvData firstObject];
+        NSMutableString *columnStr = [[NSMutableString alloc] initWithString:@""];
+        int i = 1;
+        for (NSString *key in dict)
+            [columnStr appendString:[NSString stringWithFormat:@"%d: %@\n", i++, key]];
+        self.numbersColumns.string = columnStr;
+    }
+}
+
+- (IBAction)testPagesScriptTags:(id)sender {
+    // TODO: refactor
+    PagesApplication *pages = [SBApplication applicationWithBundleIdentifier:@"com.apple.iWork.Pages"];
+    if (!pages) {
+        NSLog(@"No pages :(");
+        return;
+    }
+    if ([pages isRunning])  {
+        NSLog(@"Pages is already running");
+        // TODO: see if file already open. if so, use PagesDocument *obj already open (?)
+    }
+    PagesDocument *pagesDocument = [[pages open:self.pagesInputPath.stringValue] get];
+    if (pagesDocument) {
+        SBElementArray<PagesPlaceholderText *> *placeholderTexts = [pagesDocument placeholderTexts];
+        NSMutableArray *scriptTags = [[NSMutableArray alloc] init];
+        for (PagesPlaceholderText *text in placeholderTexts) {
+            if (![scriptTags containsObject:text.tag]) {
+                [scriptTags addObject:text.tag];
             }
         }
-        else {
-            [self showError:@"Couldn't open the Pages document!"];
-        }
+        NSMutableString *pagesTagsStr = [[NSMutableString alloc] initWithString:@""];
+        int i = 1;
+        for (NSString *key in scriptTags)
+            [pagesTagsStr appendString:[NSString stringWithFormat:@"%d: %@\n", i++, key]];
+        self.pagesTags.string = pagesTagsStr;
     }
-    else {
-        [self showError:@"Couldn't open the Numbers document!"];
-    }
+}
+
+- (IBAction)testPagesDuplicate:(id)sender {
+    [self addPage];
+    [self showMessage:@"Check Pages to see if it duplicated a page. If not, it needs to be selected, and 'Duplicate Page' must be available under the edit menu for this to work."];
 }
 
 @end
