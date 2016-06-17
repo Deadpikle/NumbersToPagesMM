@@ -245,7 +245,7 @@
                 });
                 return;
             }
-            NSArray *csvData = [dataStr CSVComponentsWithOptions:CHCSVParserOptionsUsesFirstLineAsKeys];
+            NSArray *csvData = [dataStr CSVComponentsWithOptions:CHCSVParserOptionsUsesFirstLineAsKeys | CHCSVParserOptionsTrimsWhitespace | CHCSVParserOptionsSanitizesFields];
             if ([csvData count] == 0) {
                 dispatch_async(dispatch_get_main_queue(), ^(void) {
                     [self showError:@"No data in Numbers file!"];
@@ -294,15 +294,22 @@
                 // First, see if you need to duplicate pages. If you do, regrab the placeholder texts and such after duplicating.
                 NSUInteger fieldsRequired = personInfo.count * [PersonInfo numFields];
                 NSUInteger numberOfPersonInfoFields = [PersonInfo numFields];
+                int tries = 0;
                 while (fieldsRequired > numToProcess) {
                     [self addPage];
                     placeholderTexts = [pagesDocument placeholderTexts];
                     if (numToProcess == (unsigned long)[placeholderTexts count]) {
-                        dispatch_async(dispatch_get_main_queue(), ^(void) {
-                            [self showError:@"Couldn't duplicate page! Did you remember to select it in Pages?"];
-                            [self stopProgressIndicator];
-                        });
-                        return;
+                        tries++;
+                        if (tries == 5) {
+                            dispatch_async(dispatch_get_main_queue(), ^(void) {
+                                [self showError:@"Couldn't duplicate page! Did you remember to select it in Pages?"];
+                                [self stopProgressIndicator];
+                            });
+                            return;
+                        }
+                    }
+                    else {
+                        tries = 0;
                     }
                     numToProcess = (unsigned long)[placeholderTexts count];
                     fieldsRequired = personInfo.count * numberOfPersonInfoFields;
@@ -356,6 +363,9 @@
                 [self stopProgressIndicator];
             });
         }
+        dispatch_async(dispatch_get_main_queue(), ^(void) {
+            [self stopProgressIndicator];
+        });
     });
 }
 

@@ -46,6 +46,18 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		344C76281D142C160077466A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		344C75CA1D10C75B0077466A /* NumbersToPagesMailMerge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NumbersToPagesMailMerge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		344C75CD1D10C75B0077466A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -220,6 +232,7 @@
 				344C75C61D10C75B0077466A /* Sources */,
 				344C75C71D10C75B0077466A /* Frameworks */,
 				344C75C81D10C75B0077466A /* Resources */,
+				344C76281D142C160077466A /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -485,8 +498,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/NumbersToPagesMailMerge",
+				);
 				INFOPLIST_FILE = NumbersToPagesMailMerge/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.southern.cs.circ.NumbersToPagesMailMerge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -497,8 +514,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/NumbersToPagesMailMerge",
+				);
 				INFOPLIST_FILE = NumbersToPagesMailMerge/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.southern.cs.circ.NumbersToPagesMailMerge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
