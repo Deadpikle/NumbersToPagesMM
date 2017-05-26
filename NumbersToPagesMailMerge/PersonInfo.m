@@ -8,6 +8,7 @@
 
 #import "PersonInfo.h"
 
+// these are the numbers columns that are expected
 NSString *const FirstNameColumnName = @"First Name";
 NSString *const LastNameColumnName = @"Last Name";
 NSString *const InstrumentColumnName = @"Instrument";
@@ -17,7 +18,7 @@ NSString *const BookColumnName = @"Book";
 NSString *const SightReadingColumnName = @"Sight-read";
 NSString *const ExperienceColumnName = @"Orch?";
 
-
+// these are the pages tags that are expected. column name -> tag name
 NSString *const FirstNameTagName = @"First Name";
 NSString *const LastNameTagName = @"Last Name";
 NSString *const InstrumentTagName = @"Instrument";

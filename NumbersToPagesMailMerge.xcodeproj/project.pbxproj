@@ -15,7 +15,6 @@
 		344C75E51D10C75B0077466A /* NumbersToPagesMailMergeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 344C75E41D10C75B0077466A /* NumbersToPagesMailMergeTests.m */; };
 		344C75F01D10C75B0077466A /* NumbersToPagesMailMergeUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 344C75EF1D10C75B0077466A /* NumbersToPagesMailMergeUITests.m */; };
 		344C76031D10D0580077466A /* CHCSVParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 344C76011D10D0580077466A /* CHCSVParser.m */; };
-		344C76041D10D0580077466A /* CHCSVParserOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344C76021D10D0580077466A /* CHCSVParserOptions.swift */; };
 		344C76081D10D21E0077466A /* PersonInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 344C76071D10D21E0077466A /* PersonInfo.m */; };
 		344C760A1D10D7B70077466A /* License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 344C76091D10D7B70077466A /* License.txt */; };
 		344C760C1D10E3EB0077466A /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 344C760B1D10E3EB0077466A /* ScriptingBridge.framework */; };
@@ -78,7 +77,6 @@
 		344C75FE1D10C8260077466A /* Pages.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Pages.h; sourceTree = "<group>"; };
 		344C76001D10D0580077466A /* CHCSVParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHCSVParser.h; sourceTree = "<group>"; };
 		344C76011D10D0580077466A /* CHCSVParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHCSVParser.m; sourceTree = "<group>"; };
-		344C76021D10D0580077466A /* CHCSVParserOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHCSVParserOptions.swift; sourceTree = "<group>"; };
 		344C76061D10D21E0077466A /* PersonInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonInfo.h; sourceTree = "<group>"; };
 		344C76071D10D21E0077466A /* PersonInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonInfo.m; sourceTree = "<group>"; };
 		344C76091D10D7B70077466A /* License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = License.txt; sourceTree = "<group>"; };
@@ -198,7 +196,6 @@
 			children = (
 				344C76001D10D0580077466A /* CHCSVParser.h */,
 				344C76011D10D0580077466A /* CHCSVParser.m */,
-				344C76021D10D0580077466A /* CHCSVParserOptions.swift */,
 				344C76091D10D7B70077466A /* License.txt */,
 			);
 			path = CHCSVParser;
@@ -285,7 +282,7 @@
 		344C75C21D10C75B0077466A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = CIRC;
 				TargetAttributes = {
 					344C75C91D10C75B0077466A = {
@@ -362,7 +359,6 @@
 			files = (
 				344C76081D10D21E0077466A /* PersonInfo.m in Sources */,
 				344C76031D10D0580077466A /* CHCSVParser.m in Sources */,
-				344C76041D10D0580077466A /* CHCSVParserOptions.swift in Sources */,
 				344C75D51D10C75B0077466A /* ViewController.m in Sources */,
 				344C75D21D10C75B0077466A /* main.m in Sources */,
 				344C75CF1D10C75B0077466A /* AppDelegate.m in Sources */,
@@ -426,8 +422,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
@@ -470,8 +468,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
