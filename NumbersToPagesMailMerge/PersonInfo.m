@@ -152,10 +152,10 @@ NSString *const StateTagName = @"State";
         return self.sightReading;
     }
     else if ([key isEqualToString:CityTagName]) {
-        return self.sightReading;
+        return self.city;
     }
     else if ([key isEqualToString:StateTagName]) {
-        return self.sightReading;
+        return self.state;
     }
     else if ([self.unknownKeys objectForKey:key]) {
         return self.unknownKeys[key];
