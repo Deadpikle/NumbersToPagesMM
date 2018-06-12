@@ -45,6 +45,8 @@ FOUNDATION_EXPORT NSString *const ExperienceTagName;
 @property NSString *city;
 @property NSString *state;
 
+@property NSMutableDictionary *unknownKeys;
+
 -(id)initWithDictionary:(NSDictionary*)dict;
 
 +(NSUInteger)numFields;

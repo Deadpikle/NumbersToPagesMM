@@ -37,6 +37,7 @@ NSString *const StateTagName = @"State";
 -(id)initWithDictionary:(NSDictionary*)dict {
     self = [super init];
     if (self) {
+        self.unknownKeys = [NSMutableDictionary dictionary];
         for (NSString *key in dict) {
             id value = [dict objectForKey:key];
             [self setValue:value forKey:key];
@@ -83,6 +84,9 @@ NSString *const StateTagName = @"State";
     else if ([key isEqualToString:StateColumnName]) {
         self.state = [NSString stringWithString:value];
     }
+    else {
+        self.unknownKeys[key] = value;
+    }
 }
 
 -(id)valueForKey:(NSString *)key {
@@ -115,6 +119,9 @@ NSString *const StateTagName = @"State";
     }
     else if ([key isEqualToString:StateColumnName]) {
         return self.state;
+    }
+    else if ([self.unknownKeys objectForKey:key]) {
+        return self.unknownKeys[key];
     }
     return nil;
 }
@@ -149,6 +156,9 @@ NSString *const StateTagName = @"State";
     }
     else if ([key isEqualToString:StateTagName]) {
         return self.sightReading;
+    }
+    else if ([self.unknownKeys objectForKey:key]) {
+        return self.unknownKeys[key];
     }
     return nil;
 }
