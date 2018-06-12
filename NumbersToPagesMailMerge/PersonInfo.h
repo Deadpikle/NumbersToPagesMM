@@ -42,6 +42,8 @@ FOUNDATION_EXPORT NSString *const ExperienceTagName;
 @property NSString *book;
 @property NSString *sightReading;
 @property NSString *experience;
+@property NSString *city;
+@property NSString *state;
 
 -(id)initWithDictionary:(NSDictionary*)dict;
 

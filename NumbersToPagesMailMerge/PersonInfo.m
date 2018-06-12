@@ -17,6 +17,8 @@ NSString *const AgeColumnName = @"Age";
 NSString *const BookColumnName = @"Book";
 NSString *const SightReadingColumnName = @"Sight-read";
 NSString *const ExperienceColumnName = @"Orch?";
+NSString *const CityColumnName = @"City";
+NSString *const StateColumnName = @"State";
 
 // these are the pages tags that are expected. column name -> tag name
 NSString *const FirstNameTagName = @"First Name";
@@ -27,6 +29,8 @@ NSString *const AgeTagName = @"Age";
 NSString *const BookTagName = @"Book";
 NSString *const SightReadingTagName = @"Sight-reading";
 NSString *const ExperienceTagName = @"Orchestra"; // Experience ?
+NSString *const CityTagName = @"City";
+NSString *const StateTagName = @"State";
 
 @implementation PersonInfo
 
@@ -70,6 +74,15 @@ NSString *const ExperienceTagName = @"Orchestra"; // Experience ?
     else if ([key isEqualToString:SightReadingColumnName]) {
         self.sightReading = [NSString stringWithString:value];
     }
+    else if ([key isEqualToString:SightReadingColumnName]) {
+        self.sightReading = [NSString stringWithString:value];
+    }
+    else if ([key isEqualToString:CityColumnName]) {
+        self.city = [NSString stringWithString:value];
+    }
+    else if ([key isEqualToString:StateColumnName]) {
+        self.state = [NSString stringWithString:value];
+    }
 }
 
 -(id)valueForKey:(NSString *)key {
@@ -97,6 +110,12 @@ NSString *const ExperienceTagName = @"Orchestra"; // Experience ?
     else if ([key isEqualToString:SightReadingColumnName]) {
         return self.sightReading;
     }
+    else if ([key isEqualToString:CityColumnName]) {
+        return self.city;
+    }
+    else if ([key isEqualToString:StateColumnName]) {
+        return self.state;
+    }
     return nil;
 }
 
@@ -123,6 +142,12 @@ NSString *const ExperienceTagName = @"Orchestra"; // Experience ?
         return self.experience;
     }
     else if ([key isEqualToString:SightReadingTagName]) {
+        return self.sightReading;
+    }
+    else if ([key isEqualToString:CityTagName]) {
+        return self.sightReading;
+    }
+    else if ([key isEqualToString:StateTagName]) {
         return self.sightReading;
     }
     return nil;
