@@ -209,6 +209,7 @@
     if ([self.numbersInputPath.stringValue isEqualToString:@""])
         return;
     [self startProgressIndicator];
+    NSString *inputPath = self.numbersInputPath.stringValue;
     dispatch_queue_t backgroundQueue = dispatch_queue_create("com.pikleproductions.mailmerge", NULL);
     
     dispatch_async(backgroundQueue, ^(void) {
@@ -222,7 +223,7 @@
             NSLog(@"Numbers is already running");
             // TODO: see if file already open. if so, use NumbersDocument *obj already open (?)
         }
-        NumbersDocument *numbersDocument = [numbers open:self.numbersInputPath.stringValue];
+        NumbersDocument *numbersDocument = [numbers open:inputPath];
         if (numbersDocument) {
             NSLog(@"Got the doc!");
             // NSAppleEventDescriptor *active = [NSAppleEventDescriptor descriptorWithEnumCode:OFProjectStatusActive];
@@ -261,9 +262,9 @@
                 if (info) {
                     // enforce first name, last name, age, and book
                     if (![info.firstName isEqualToString:@""] &&
-                        ![info.lastName isEqualToString:@""] &&
+                        ![info.lastName isEqualToString:@""] /*&&
                         info.age != 0 &&
-                        info.book != 0) {
+                        info.book != 0*/) {
                         [personInfo addObject:info];
                     }
                 }
@@ -300,6 +301,7 @@
                     placeholderTexts = [pagesDocument placeholderTexts];
                     if (numToProcess == (unsigned long)[placeholderTexts count]) {
                         tries++;
+                        usleep(100000 *10);
                         if (tries == 5) {
                             dispatch_async(dispatch_get_main_queue(), ^(void) {
                                 [self showError:@"Couldn't duplicate page! Did you remember to select it in Pages?"];
