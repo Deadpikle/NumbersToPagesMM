@@ -209,7 +209,8 @@
     if ([self.numbersInputPath.stringValue isEqualToString:@""])
         return;
     [self startProgressIndicator];
-    NSString *inputPath = self.numbersInputPath.stringValue;
+    NSString *numbersPath = self.numbersInputPath.stringValue;
+    NSString *pagesPath = self.pagesInputPath.stringValue;
     dispatch_queue_t backgroundQueue = dispatch_queue_create("com.pikleproductions.mailmerge", NULL);
     
     dispatch_async(backgroundQueue, ^(void) {
@@ -223,7 +224,7 @@
             NSLog(@"Numbers is already running");
             // TODO: see if file already open. if so, use NumbersDocument *obj already open (?)
         }
-        NumbersDocument *numbersDocument = [numbers open:inputPath];
+        NumbersDocument *numbersDocument = [numbers open:numbersPath];
         if (numbersDocument) {
             NSLog(@"Got the doc!");
             // NSAppleEventDescriptor *active = [NSAppleEventDescriptor descriptorWithEnumCode:OFProjectStatusActive];
@@ -287,7 +288,7 @@
                 NSLog(@"Pages is already running");
                 // TODO: see if file already open. if so, use PagesDocument *obj already open (?)
             }
-            PagesDocument *pagesDocument = [[pages open:self.pagesInputPath.stringValue] get];
+            PagesDocument *pagesDocument = [[pages open:pagesPath] get];
             if (pagesDocument) {
                 SBElementArray<PagesPlaceholderText *> *placeholderTexts = [pagesDocument placeholderTexts];
                 //            NSArray *items = [placeholderTexts get]; // returns strings
@@ -331,22 +332,26 @@
                         // If you want a for() loop [for (i in collection) loops do not work]:
                         // PagesPlaceholderText *text = [placeholderTexts objectAtIndex:numToProcess - j - 1];
                         if (text.tag && ![text.tag isEqualToString:@""]) {
-                            //NSLog(@"Tag: %@", text.tag);
+                            
                             NSString *data = [currPersonInfo valueForTagKey:text.tag];
+                            NSLog(@"Tag: %@ -> data: %@", text.tag, data);
                             [self runApplescriptForTag:text.tag withReplacementText:data];
                         }
                         numProcessed++;
                         if (numProcessed % numberOfPersonInfoFields == 0) {
                             // Filled out all fields for a person (since we seem to be lucky and not get the next set of fields
                             // until we've filled out one set of fields
-                            if (++currPersonInfoIndex <= personInfo.count - 1)
+                            if (++currPersonInfoIndex <= personInfo.count - 1) {
                                 currPersonInfo = personInfo[currPersonInfoIndex];
-                            else
+                            }
+                            else {
                                 currPersonInfo = nil;
+                            }
                         }
                     }
                     else {
                         // Clear out all the other fields
+                        NSLog(@"Clearing other fields");
                         [self runApplescriptForTag:text.tag withReplacementText:@""];
                         numProcessed++;
                     }

@@ -47,7 +47,7 @@ NSString *const StateTagName = @"State";
 }
 
 +(NSUInteger)numFields {
-    return 8;
+    return 6;
 }
 
 -(void)setValue:(id)value forKey:(NSString *)key {
