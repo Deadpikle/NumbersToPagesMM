@@ -49,9 +49,6 @@ FOUNDATION_EXPORT NSString *const ExperienceTagName;
 
 -(id)initWithDictionary:(NSDictionary*)dict;
 
-+(NSUInteger)numFields;
-
-
 -(id)valueForTagKey:(NSString *)key;
 
 @end

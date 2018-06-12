@@ -51,6 +51,7 @@
 - (IBAction)testPagesDuplicate:(id)sender;
 @property (unsafe_unretained) IBOutlet NSTextView *numbersColumns;
 @property (unsafe_unretained) IBOutlet NSTextView *pagesTags;
+@property (unsafe_unretained) IBOutlet NSTextField *numberOfPagesFields;
 @property (weak) IBOutlet NSProgressIndicator *activityIndicator;
 
 @end
@@ -211,6 +212,7 @@
     [self startProgressIndicator];
     NSString *numbersPath = self.numbersInputPath.stringValue;
     NSString *pagesPath = self.pagesInputPath.stringValue;
+    NSInteger numberOfPagesFields = [self.numberOfPagesFields.stringValue integerValue];
     dispatch_queue_t backgroundQueue = dispatch_queue_create("com.pikleproductions.mailmerge", NULL);
     
     dispatch_async(backgroundQueue, ^(void) {
@@ -294,8 +296,8 @@
                 //            NSArray *items = [placeholderTexts get]; // returns strings
                 unsigned long numToProcess = (unsigned long)[placeholderTexts count];
                 // First, see if you need to duplicate pages. If you do, regrab the placeholder texts and such after duplicating.
-                NSUInteger fieldsRequired = personInfo.count * [PersonInfo numFields];
-                NSUInteger numberOfPersonInfoFields = [PersonInfo numFields];
+                NSUInteger fieldsRequired = personInfo.count * numberOfPagesFields;
+                NSUInteger numberOfPersonInfoFields = numberOfPagesFields;
                 int tries = 0;
                 while (fieldsRequired > numToProcess) {
                     [self addPage];

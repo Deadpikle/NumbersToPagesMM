@@ -46,10 +46,6 @@ NSString *const StateTagName = @"State";
     return self;
 }
 
-+(NSUInteger)numFields {
-    return 6;
-}
-
 -(void)setValue:(id)value forKey:(NSString *)key {
     if ([key isEqualToString:FirstNameColumnName]) {
         self.firstName = [NSString stringWithString:value];
